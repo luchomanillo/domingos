@@ -1,0 +1,1694 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Registro Clase Dominical</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Lora:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F7FAFF;
+    --warm-white: #FFFFFF;
+    --gold: #F7941D;
+    --gold-light: #FBBA52;
+    --gold-pale: #FEF3E2;
+    --deep: #1A1A2E;
+    --brown: #444466;
+    --brown-light: #7777AA;
+    --sage: #4DC8C8;
+    --sage-light: #A8E8E8;
+    --sage-pale: #E8FAFA;
+    --border: #D8E8F8;
+    --shadow: rgba(26,26,46,0.10);
+    --pink: #F06292;
+    --purple: #9C6FD6;
+    --green: #4CAF7D;
+    --yellow: #F7C948;
+    --blue: #4AADE8;
+    --orange: #F7941D;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: var(--cream);
+    color: var(--deep);
+    min-height: 100vh;
+    background-image: radial-gradient(circle at 10% 20%, rgba(77,200,200,0.05) 0%, transparent 40%),
+                      radial-gradient(circle at 90% 80%, rgba(247,148,29,0.05) 0%, transparent 40%);
+  }
+
+  /* HEADER */
+  header {
+    background: var(--deep);
+    padding: 18px 24px 14px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 30% 50%, rgba(77,200,200,0.15) 0%, transparent 60%),
+                radial-gradient(ellipse at 70% 50%, rgba(247,148,29,0.15) 0%, transparent 60%);
+  }
+  header .cross {
+    font-size: 28px;
+    color: white;
+    letter-spacing: 8px;
+    position: relative;
+    display: block;
+    margin-bottom: 4px;
+    text-shadow: 2px 2px 0 rgba(77,200,200,0.4), -1px -1px 0 rgba(247,148,29,0.3);
+  }
+  header h1 {
+    font-family: 'Nunito', sans-serif;
+    font-size: 26px;
+    font-weight: 900;
+    margin: 0 0 2px;
+    position: relative;
+    letter-spacing: -0.5px;
+  }
+  header h1 .c1 { color: var(--purple); }
+  header h1 .c2 { color: var(--yellow); }
+  header h1 .c3 { color: var(--pink); }
+  header h1 .c4 { color: var(--blue); }
+  header h1 .c5 { color: var(--green); }
+  header h1 .c6 { color: var(--blue); }
+  header h1 .c7 { color: var(--orange); }
+  header h1 .c8 { color: var(--purple); }
+  header h1 .c9 { color: var(--sage); }
+  header h1 .c10 { color: var(--pink); }
+  header h1 .c11 { color: var(--yellow); }
+  header h1 .c12 { color: var(--green); }
+
+  header p {
+    font-size: 11px;
+    color: rgba(255,255,255,0.55);
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    position: relative;
+  }
+
+  /* TABS */
+  .tabs {
+    display: flex;
+    background: var(--deep);
+    padding: 0 16px 0;
+    border-bottom: 1px solid rgba(77,200,200,0.2);
+  }
+  .tab-btn {
+    flex: 1;
+    padding: 12px 8px;
+    background: none;
+    border: none;
+    border-bottom: 3px solid transparent;
+    color: rgba(255,255,255,0.45);
+    font-family: 'Nunito', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    transition: all 0.2s;
+  }
+  .tab-btn.active {
+    color: var(--sage);
+    border-bottom-color: var(--sage);
+  }
+
+  /* MAIN */
+  main { padding: 20px 16px 40px; max-width: 600px; margin: 0 auto; }
+
+  .panel { display: none; }
+  .panel.active { display: block; }
+
+  /* FORM CARD */
+  .card {
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 22px 20px;
+    box-shadow: 0 4px 20px var(--shadow);
+    margin-bottom: 16px;
+  }
+  .card-title {
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--brown);
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .card-title .icon { font-size: 20px; }
+
+  .field { margin-bottom: 16px; }
+  label {
+    display: block;
+    font-size: 12px;
+    font-weight: 800;
+    color: var(--brown);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+  }
+  label .required { color: var(--pink); margin-left: 2px; }
+
+  input[type="text"], input[type="number"], select, textarea {
+    width: 100%;
+    padding: 11px 14px;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    background: var(--cream);
+    font-family: 'Nunito', sans-serif;
+    font-size: 15px;
+    color: var(--deep);
+    transition: border-color 0.2s, box-shadow 0.2s;
+    outline: none;
+  }
+  input:focus, select:focus, textarea:focus {
+    border-color: var(--sage);
+    box-shadow: 0 0 0 3px rgba(77,200,200,0.2);
+  }
+
+  .row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .row-3 { display: grid; grid-template-columns: 1fr 1fr 2fr; gap: 10px; }
+  .row-3 input { text-align: center; font-weight: 800; font-size: 16px; }
+
+  /* parentesco otro */
+  #otro-parentesco-wrap { margin-top: 10px; display: none; }
+
+  /* autocomplete */
+  .autocomplete-wrap { position: relative; }
+  .autocomplete-dropdown {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0; right: 0;
+    background: var(--warm-white);
+    border: 1.5px solid var(--sage);
+    border-radius: 12px;
+    box-shadow: 0 8px 24px var(--shadow);
+    z-index: 100;
+    overflow: hidden;
+    display: none;
+  }
+  .autocomplete-dropdown.open { display: block; }
+  .autocomplete-item {
+    padding: 10px 14px;
+    cursor: pointer;
+    border-bottom: 1px solid var(--border);
+    transition: background 0.15s;
+  }
+  .autocomplete-item:last-child { border-bottom: none; }
+  .autocomplete-item:hover { background: var(--gold-pale); }
+  .autocomplete-item .ac-name { font-size: 14px; font-weight: 800; color: var(--deep); }
+  .autocomplete-item .ac-sub { font-size: 11px; color: var(--brown-light); margin-top: 1px; }
+
+  /* adult picker modal */
+  .modal-overlay {
+    position: fixed; inset: 0;
+    background: rgba(44,24,16,0.5);
+    z-index: 200;
+    display: none;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 0;
+  }
+  .modal-overlay.open { display: flex; }
+  .modal-sheet {
+    background: var(--warm-white);
+    border-radius: 20px 20px 0 0;
+    width: 100%;
+    max-width: 600px;
+    padding: 20px 20px 32px;
+    animation: slideUp 0.3s cubic-bezier(0.34,1.56,0.64,1);
+  }
+  @keyframes slideUp {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+  }
+  .modal-handle {
+    width: 40px; height: 4px;
+    background: var(--border);
+    border-radius: 2px;
+    margin: 0 auto 16px;
+  }
+  .modal-title {
+    font-family: 'Lora', serif;
+    font-size: 16px;
+    color: var(--brown);
+    margin-bottom: 14px;
+    text-align: center;
+  }
+  .adult-option {
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    padding: 12px 14px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .adult-option:hover { border-color: var(--gold); background: var(--gold-pale); }
+  .adult-option .ao-icon {
+    width: 38px; height: 38px;
+    background: var(--gold-pale);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+  .adult-option .ao-name { font-size: 14px; font-weight: 800; color: var(--deep); }
+  .adult-option .ao-sub { font-size: 12px; color: var(--brown-light); margin-top: 2px; }
+  .modal-cancel {
+    width: 100%;
+    padding: 12px;
+    background: none;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--brown-light);
+    cursor: pointer;
+    margin-top: 4px;
+    transition: background 0.2s;
+  }
+  .modal-cancel:hover { background: var(--cream); }
+
+  /* salón */
+  .salones-wrap { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+  .salon-chip {
+    padding: 7px 14px;
+    border-radius: 20px;
+    border: 1.5px solid var(--border);
+    background: var(--cream);
+    font-family: 'Nunito', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--brown);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .salon-chip.selected {
+    background: var(--sage);
+    border-color: var(--sage);
+    color: white;
+  }
+  .salon-chip:hover:not(.selected) { border-color: var(--sage); }
+
+  /* control badge */
+  .control-input-wrap { position: relative; }
+  .control-input-wrap input { padding-right: 48px; font-size: 18px; font-weight: 800; letter-spacing: 2px; }
+  .control-badge {
+    position: absolute;
+    right: 12px; top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+  }
+
+  /* BTN */
+  .btn-primary {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, var(--sage) 0%, var(--blue) 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    font-weight: 900;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    transition: opacity 0.2s, transform 0.1s;
+    box-shadow: 0 4px 16px rgba(77,200,200,0.4);
+  }
+  .btn-primary:hover { opacity: 0.9; }
+  .btn-primary:active { transform: scale(0.98); }
+  .btn-primary:disabled { background: #ccc; box-shadow: none; cursor: not-allowed; }
+
+  /* TOAST */
+  .toast {
+    position: fixed;
+    bottom: 24px; left: 50%;
+    transform: translateX(-50%) translateY(80px);
+    background: var(--sage);
+    color: white;
+    padding: 14px 24px;
+    border-radius: 12px;
+    font-weight: 800;
+    font-size: 14px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1);
+    z-index: 999;
+    white-space: nowrap;
+  }
+  .toast.show { transform: translateX(-50%) translateY(0); }
+  .toast.error { background: #c0392b; }
+
+  /* HISTORIAL */
+  .search-wrap { position: relative; margin-bottom: 16px; }
+
+  .salones-stats-bar {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+  }
+  .salon-stat-pill {
+    flex: 1;
+    min-width: 0;
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 10px 10px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .salon-stat-pill::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--sage), var(--blue));
+  }
+  .salon-stat-pill .num {
+    font-size: 20px;
+    font-weight: 900;
+    color: var(--blue);
+    display: block;
+  }
+  .salon-stat-pill .lbl {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--brown-light);
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    margin-top: 1px;
+  }
+  .salones-stats-title {
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--brown-light);
+    margin-bottom: 8px;
+  }
+  .search-wrap input { padding-left: 40px; }
+  .search-icon {
+    position: absolute;
+    left: 13px; top: 50%;
+    transform: translateY(-50%);
+    font-size: 16px;
+    pointer-events: none;
+  }
+
+  .stats-bar {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  .stat-pill {
+    flex: 1;
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 10px 12px;
+    text-align: center;
+  }
+  .stat-pill .num {
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--orange);
+    display: block;
+  }
+  .stat-pill .lbl {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--brown-light);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+  }
+
+  .record-list { display: flex; flex-direction: column; gap: 10px; }
+
+  .record-card {
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    animation: slideIn 0.3s ease;
+  }
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .record-badge {
+    min-width: 46px; height: 46px;
+    background: linear-gradient(135deg, rgba(77,200,200,0.15), rgba(74,173,232,0.15));
+    border: 2px solid var(--sage);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px; font-weight: 900;
+    color: var(--deep);
+    letter-spacing: 1px;
+  }
+  .record-info { flex: 1; min-width: 0; }
+  .record-name {
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--deep);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .record-sub {
+    font-size: 12px;
+    color: var(--brown-light);
+    margin-top: 2px;
+  }
+  .record-meta {
+    text-align: right;
+    flex-shrink: 0;
+  }
+  .record-salon {
+    display: inline-block;
+    background: linear-gradient(135deg, rgba(77,200,200,0.15), rgba(74,173,232,0.15));
+    color: var(--blue);
+    border: 1px solid var(--sage-light);
+    border-radius: 6px;
+    font-size: 10px;
+    font-weight: 800;
+    padding: 2px 7px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+  .record-time {
+    font-size: 11px;
+    color: #aaa;
+    margin-top: 4px;
+  }
+
+  .empty-state {
+    text-align: center;
+    padding: 48px 20px;
+    color: var(--brown-light);
+  }
+  .empty-state .emoji { font-size: 40px; display: block; margin-bottom: 12px; }
+  .empty-state p { font-weight: 700; font-size: 15px; }
+
+  /* CONFIG PANEL */
+  .config-section { margin-bottom: 20px; }
+  .config-section h3 {
+    font-size: 13px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--brown-light);
+    margin-bottom: 10px;
+  }
+  .config-row {
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 14px;
+    margin-bottom: 8px;
+    font-size: 14px;
+  }
+  .config-row code {
+    display: block;
+    background: var(--cream);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 10px;
+    font-size: 12px;
+    margin-top: 8px;
+    word-break: break-all;
+    color: var(--brown);
+  }
+  .config-row input[type="text"] {
+    margin-top: 8px;
+    font-size: 13px;
+  }
+  .btn-save-config {
+    width: 100%;
+    padding: 13px;
+    background: var(--deep);
+    color: var(--gold-light);
+    border: none;
+    border-radius: 10px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 14px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    margin-top: 4px;
+  }
+  .btn-save-config:hover { opacity: 0.85; }
+
+  .btn-danger {
+    width: 100%;
+    padding: 13px;
+    background: none;
+    border: 1.5px solid #c0392b;
+    color: #c0392b;
+    border-radius: 10px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 14px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .btn-danger:hover { background: #c0392b; color: white; }
+
+  /* confirm dialog */
+  .confirm-overlay {
+    position: fixed; inset: 0;
+    background: rgba(44,24,16,0.5);
+    z-index: 300;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+  .confirm-overlay.open { display: flex; }
+  .confirm-box {
+    background: var(--warm-white);
+    border-radius: 20px;
+    padding: 28px 24px;
+    width: 100%;
+    max-width: 360px;
+    text-align: center;
+    animation: popIn 0.25s cubic-bezier(0.34,1.56,0.64,1);
+  }
+  @keyframes popIn {
+    from { transform: scale(0.85); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+  .confirm-icon { font-size: 40px; display: block; margin-bottom: 12px; }
+  .confirm-title { font-family: 'Lora', serif; font-size: 18px; color: var(--deep); margin-bottom: 8px; }
+  .confirm-text { font-size: 13px; color: var(--brown-light); line-height: 1.6; margin-bottom: 20px; }
+  .confirm-btns { display: flex; gap: 10px; }
+  .confirm-btns button { flex: 1; padding: 12px; border-radius: 10px; font-family: 'Nunito'; font-size: 14px; font-weight: 800; cursor: pointer; border: none; transition: opacity 0.2s; }
+  .confirm-btns .btn-cancel-confirm { background: var(--cream); border: 1.5px solid var(--border); color: var(--brown); }
+  .confirm-btns .btn-confirm-delete { background: #c0392b; color: white; }
+  .confirm-btns button:hover { opacity: 0.85; }
+
+  .step-list { counter-reset: step; }
+  .step {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 12px;
+    align-items: flex-start;
+  }
+  .step-num {
+    min-width: 26px; height: 26px;
+    background: var(--gold);
+    color: white;
+    border-radius: 50%;
+    font-size: 13px;
+    font-weight: 900;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .step-text { font-size: 13px; line-height: 1.6; color: var(--deep); }
+  .step-text a { color: var(--gold); font-weight: 700; }
+  .step-text code {
+    background: var(--gold-pale);
+    border-radius: 4px;
+    padding: 1px 5px;
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  /* date badge */
+  .date-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--gold-pale);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 5px 12px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--brown);
+    margin-bottom: 16px;
+  }
+
+  .highlight { background: rgba(200,146,42,0.2); border-radius: 3px; }
+
+  /* login screen */
+  #login-screen {
+    position: fixed; inset: 0;
+    background: var(--deep);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+  #login-screen::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 30% 40%, rgba(77,200,200,0.2) 0%, transparent 55%),
+                radial-gradient(ellipse at 70% 60%, rgba(247,148,29,0.2) 0%, transparent 55%);
+  }
+  .login-box {
+    width: 100%;
+    max-width: 320px;
+    text-align: center;
+    position: relative;
+  }
+  .login-cross {
+    font-size: 36px;
+    display: block;
+    margin-bottom: 8px;
+    color: white;
+    text-shadow: 2px 2px 0 rgba(77,200,200,0.4), -1px -1px 0 rgba(247,148,29,0.3);
+    letter-spacing: 4px;
+  }
+  .login-title { font-family: 'Nunito', sans-serif; font-size: 26px; font-weight: 900; color: var(--warm-white); margin-bottom: 4px; }
+  .login-sub { font-size: 11px; color: rgba(255,255,255,0.5); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 32px; }
+  .login-input {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1.5px solid rgba(200,146,42,0.4);
+    border-radius: 12px;
+    background: rgba(255,255,255,0.07);
+    font-family: 'Nunito', sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: 4px;
+    text-align: center;
+    color: white;
+    outline: none;
+    margin-bottom: 8px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .login-input::placeholder { color: rgba(255,255,255,0.25); letter-spacing: 2px; font-size: 14px; }
+  .login-input:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(200,146,42,0.2); }
+  .login-input.error { border-color: #e74c3c; animation: shake 0.3s ease; }
+  .login-error { font-size: 12px; color: #e74c3c; font-weight: 700; min-height: 18px; margin-bottom: 16px; }
+  .login-btn {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, var(--sage) 0%, var(--blue) 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    font-weight: 900;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(77,200,200,0.4);
+    transition: opacity 0.2s, transform 0.1s;
+  }
+  .login-btn:hover { opacity: 0.9; }
+  .login-btn:active { transform: scale(0.98); }
+
+  /* password modal */
+  .pwd-overlay {
+    position: fixed; inset: 0;
+    background: rgba(44,24,16,0.6);
+    z-index: 400;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+  .pwd-overlay.open { display: flex; }
+  .pwd-box {
+    background: var(--warm-white);
+    border-radius: 20px;
+    padding: 32px 24px;
+    width: 100%;
+    max-width: 320px;
+    text-align: center;
+    animation: popIn 0.25s cubic-bezier(0.34,1.56,0.64,1);
+  }
+  .pwd-icon { font-size: 36px; display: block; margin-bottom: 12px; }
+  .pwd-title { font-family: 'Lora', serif; font-size: 18px; color: var(--deep); margin-bottom: 6px; }
+  .pwd-sub { font-size: 13px; color: var(--brown-light); margin-bottom: 20px; }
+  .pwd-input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    background: var(--cream);
+    font-family: 'Nunito', sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: 4px;
+    text-align: center;
+    color: var(--deep);
+    outline: none;
+    margin-bottom: 8px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .pwd-input:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(200,146,42,0.15); }
+  .pwd-input.error { border-color: #c0392b; box-shadow: 0 0 0 3px rgba(192,57,43,0.15); animation: shake 0.3s ease; }
+  @keyframes shake {
+    0%,100% { transform: translateX(0); }
+    25% { transform: translateX(-6px); }
+    75% { transform: translateX(6px); }
+  }
+  .pwd-error { font-size: 12px; color: #c0392b; font-weight: 700; min-height: 18px; margin-bottom: 12px; }
+  .pwd-btns { display: flex; gap: 10px; }
+  .pwd-btns button { flex: 1; padding: 12px; border-radius: 10px; font-family: 'Nunito'; font-size: 14px; font-weight: 800; cursor: pointer; border: none; transition: opacity 0.2s; }
+  .pwd-btn-cancel { background: var(--cream); border: 1.5px solid var(--border) !important; color: var(--brown); }
+  .pwd-btn-enter { background: var(--gold); color: white; box-shadow: 0 4px 12px rgba(200,146,42,0.3); }
+  .pwd-btn-enter:hover, .pwd-btn-cancel:hover { opacity: 0.85; }
+</style>
+</head>
+<body>
+
+<!-- Login screen -->
+<div id="login-screen">
+  <div class="login-box">
+    <span class="login-cross">✝</span>
+    <div class="login-title"><span style="color:var(--purple)">C</span><span style="color:var(--yellow)">H</span><span style="color:var(--pink)">I</span><span style="color:var(--blue)">C</span><span style="color:var(--green)">O</span><span style="color:var(--orange)">S</span> <span style="color:var(--sage)">D</span><span style="color:var(--pink)">E</span><span style="color:var(--yellow)">L</span> <span style="color:var(--purple)">C</span><span style="color:var(--blue)">E</span><span style="color:var(--green)">N</span><span style="color:var(--orange)">T</span><span style="color:var(--pink)">R</span><span style="color:var(--sage)">O</span></div>
+    <div class="login-sub">Registro de Ingreso</div>
+    <input class="login-input" id="login-input" type="password" placeholder="Contraseña" maxlength="20" onkeydown="if(event.key==='Enter')verificarLogin()">
+    <div class="login-error" id="login-error"></div>
+    <button class="login-btn" onclick="verificarLogin()">Ingresar</button>
+  </div>
+</div>
+
+<header>
+  <div class="cross">✝</div>
+  <h1><span style="color:var(--purple)">C</span><span style="color:var(--yellow)">H</span><span style="color:var(--pink)">I</span><span style="color:var(--blue)">C</span><span style="color:var(--green)">O</span><span style="color:var(--orange)">S</span> <span style="color:var(--sage)">D</span><span style="color:var(--pink)">E</span><span style="color:var(--yellow)">L</span> <span style="color:var(--purple)">C</span><span style="color:var(--blue)">E</span><span style="color:var(--green)">N</span><span style="color:var(--orange)">T</span><span style="color:var(--pink)">R</span><span style="color:var(--sage)">O</span></h1>
+  <p>Registro de Ingreso</p>
+</header>
+
+<div class="tabs">
+  <button class="tab-btn active" onclick="switchTab('registro')">📋 Registro</button>
+  <button class="tab-btn" onclick="switchTab('historial')">📚 Historial</button>
+  <button class="tab-btn" onclick="switchTab('config')">⚙️ Configuración</button>
+</div>
+
+<main>
+
+  <!-- ========== REGISTRO ========== -->
+  <div id="panel-registro" class="panel active">
+
+    <div class="card">
+      <div class="card-title"><span class="icon">👶</span> Datos del Niño</div>
+
+      <div class="field">
+        <label>Nombre completo <span class="required">*</span></label>
+        <div class="autocomplete-wrap">
+          <input type="text" id="nombre-nino" placeholder="Ej: María González" autocomplete="off" oninput="onNombreNinoInput()" onblur="setTimeout(()=>cerrarDropdown(),200)">
+          <div class="autocomplete-dropdown" id="ac-dropdown"></div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Fecha de nacimiento <span class="required">*</span></label>
+        <div class="row-3">
+          <input type="number" id="fnac-dia" placeholder="Día" min="1" max="31" oninput="clampFecha(this,1,31,'fnac-mes')">
+          <input type="number" id="fnac-mes" placeholder="Mes" min="1" max="12" oninput="clampFecha(this,1,12,'fnac-anio')">
+          <input type="number" id="fnac-anio" placeholder="Año" min="2015" oninput="clampAnio(this)">
+        </div>
+      </div>
+
+      <div class="row-2">
+        <div class="field">
+          <label>N° de Cintita <span class="required">*</span></label>
+          <div class="control-input-wrap">
+            <input type="text" id="num-control" placeholder="1234" maxlength="10">
+            <span class="control-badge">🏷️</span>
+          </div>
+        </div>
+        <div class="field">
+          <label>Salón / Clase <span class="required">*</span></label>
+          <select id="salon">
+            <option value="">— Seleccionar —</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><span class="icon">👨‍👩‍👧</span> Adulto Responsable</div>
+
+      <div class="field">
+        <label>Nombre completo <span class="required">*</span></label>
+        <input type="text" id="nombre-adulto" placeholder="Ej: Juan González" autocomplete="off">
+      </div>
+
+      <div class="field">
+        <label>Parentesco <span class="required">*</span></label>
+        <select id="parentesco" onchange="checkOtroParentesco()">
+          <option value="">— Seleccionar —</option>
+          <option>Madre</option>
+          <option>Padre</option>
+          <option>Abuela/o</option>
+          <option>Tía/o</option>
+          <option>Otro</option>
+        </select>
+        <div id="otro-parentesco-wrap">
+          <input type="text" id="otro-parentesco" placeholder="Especificar parentesco...">
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Teléfono de contacto <span class="required">*</span></label>
+        <input type="text" id="telefono-adulto" placeholder="Ej: +54 11 1234-5678" autocomplete="off">
+      </div>
+    </div>
+
+    <button class="btn-primary" id="btn-registrar" onclick="registrar()">
+      ✅ Registrar Ingreso
+    </button>
+  </div>
+
+  <!-- ========== HISTORIAL ========== -->
+  <div id="panel-historial" class="panel">
+
+    <div class="date-badge">
+      📅 <span id="fecha-hoy"></span>
+    </div>
+
+    <div class="stats-bar">
+      <div class="stat-pill">
+        <span class="num" id="stat-total">0</span>
+        <span class="lbl">Total hoy</span>
+      </div>
+      <div class="stat-pill">
+        <span class="num" id="stat-semana">0</span>
+        <span class="lbl">Esta semana</span>
+      </div>
+      <div class="stat-pill">
+        <span class="num" id="stat-todos">0</span>
+        <span class="lbl">Total general</span>
+      </div>
+    </div>
+
+    <div class="salones-stats-title">Hoy por salón</div>
+    <div class="salones-stats-bar" id="salones-stats-bar"></div>
+
+    <div class="search-wrap">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="buscador" placeholder="Buscar por nombre o N° de control..." oninput="filtrarRegistros()">
+    </div>
+
+    <div class="record-list" id="lista-registros">
+      <div class="empty-state">
+        <span class="emoji">✝️</span>
+        <p>Aún no hay registros.<br>¡Empieza registrando el primer ingreso!</p>
+      </div>
+    </div>
+
+    <button class="btn-danger" style="margin-top:20px;" onclick="confirmarBorrado()">🗑️ Borrar historial local</button>
+  </div>
+
+  <!-- ========== CONFIGURACIÓN ========== -->
+  <div id="panel-config" class="panel">
+
+    <div class="card">
+      <div class="card-title"><span class="icon">📊</span> Conexión a Google Sheets</div>
+
+      <div class="config-section">
+        <h3>Paso a paso</h3>
+        <div class="step-list">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-text">Abrí <a href="https://sheets.google.com" target="_blank">Google Sheets</a> y creá una hoja nueva. Nombrála <code>Registro Dominical</code>.</div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-text">En la <strong>fila 1</strong>, escribí estos encabezados exactamente en las celdas A1 a G1:<br>
+              <code>Fecha | Hora | Nombre Niño | Fecha Nac | Salón | Nombre Adulto | Parentesco | Teléfono | N° Control</code>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-text">Andá a <strong>Extensiones → Apps Script</strong>. Borrá lo que haya y pegá el código que está más abajo.</div>
+          </div>
+          <div class="step">
+            <div class="step-num">4</div>
+            <div class="step-text">Hacé clic en <strong>Implementar → Nueva implementación → Aplicación web</strong>. Configurá: Ejecutar como <code>Yo</code>, Acceso para <code>Cualquier usuario</code>. Copiá la URL que te da.</div>
+          </div>
+          <div class="step">
+            <div class="step-num">5</div>
+            <div class="step-text">Pegá esa URL en el campo de abajo y guardá.</div>
+          </div>
+        </div>
+
+        <div class="config-row">
+          <strong>📋 Código para Apps Script:</strong>
+          <code id="apps-script-code">function doPost(e) {
+  try {
+    var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+    var p = e.parameter;
+    sheet.appendRow([
+      p.fecha,
+      p.hora,
+      p.nombreNino,
+      p.fechaNac,
+      p.salon,
+      p.nombreAdulto,
+      p.parentesco,
+      p.telefonoAdulto,
+      p.numControl
+    ]);
+    return ContentService
+      .createTextOutput(JSON.stringify({ok: true}))
+      .setMimeType(ContentService.MimeType.JSON);
+  } catch(err) {
+    return ContentService
+      .createTextOutput(JSON.stringify({ok: false, error: err.toString()}))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+}
+
+function doGet(e) {
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+  var rows = sheet.getDataRange().getValues();
+  var headers = rows[0];
+  var data = [];
+  for (var i = 1; i < rows.length; i++) {
+    var obj = {};
+    for (var j = 0; j < headers.length; j++) {
+      obj[headers[j]] = rows[i][j];
+    }
+    data.push(obj);
+  }
+  return ContentService
+    .createTextOutput(JSON.stringify(data))
+    .setMimeType(ContentService.MimeType.JSON);
+}</code>
+          <button onclick="copiarCodigo()" style="margin-top:10px;padding:8px 16px;background:var(--gold);color:white;border:none;border-radius:8px;font-family:Nunito;font-weight:800;cursor:pointer;font-size:13px;">📋 Copiar código</button>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>URL del Web App (Apps Script)</label>
+        <input type="text" id="webhook-url" placeholder="https://script.google.com/macros/s/..." oninput="guardarConfig()">
+      </div>
+
+      <button class="btn-save-config" onclick="probarConexion()">🔗 Probar conexión</button>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><span class="icon">🏫</span> Salones / Clases</div>
+      <p style="font-size:13px;color:var(--brown-light);margin-bottom:12px;">Agregá los salones de tu iglesia separados por coma.</p>
+      <div class="field">
+        <label>Lista de salones</label>
+        <textarea id="salones-input" rows="3" placeholder="Sala 2, Sala 3, Sala 4, Sala 5, Cangrejos (6), Abejas (7-8), Camaleones (9-10)"></textarea>
+      </div>
+      <button class="btn-save-config" onclick="guardarSalones()">💾 Guardar salones</button>
+    </div>
+
+  </div>
+
+</main>
+
+<div class="toast" id="toast"></div>
+
+<!-- Password modal -->
+<div class="pwd-overlay" id="pwd-modal">
+  <div class="pwd-box">
+    <span class="pwd-icon">🔐</span>
+    <div class="pwd-title">Área restringida</div>
+    <div class="pwd-sub">Ingresá la contraseña para acceder a Configuración</div>
+    <input class="pwd-input" id="pwd-input" type="password" maxlength="20" placeholder="••••••••" onkeydown="if(event.key==='Enter')verificarPassword()">
+    <div class="pwd-error" id="pwd-error"></div>
+    <div class="pwd-btns">
+      <button class="pwd-btn-cancel" onclick="cerrarPasswordModal()">Cancelar</button>
+      <button class="pwd-btn-enter" onclick="verificarPassword()">Ingresar</button>
+    </div>
+  </div>
+</div>
+
+<!-- Confirm delete modal -->
+<div class="confirm-overlay" id="confirm-modal">
+  <div class="confirm-box">
+    <span class="confirm-icon">⚠️</span>
+    <div class="confirm-title">¿Borrar historial local?</div>
+    <div class="confirm-text">Se eliminará el historial guardado en este dispositivo. Los datos en Google Sheets <strong>no se borran</strong> y podés volver a sincronizarlos abriendo la app.</div>
+    <div class="confirm-btns">
+      <button class="btn-cancel-confirm" onclick="cerrarConfirm()">Cancelar</button>
+      <button class="btn-confirm-delete" onclick="borrarLocal()">Sí, borrar</button>
+    </div>
+  </div>
+</div>
+
+<!-- Adult picker modal -->
+<div class="modal-overlay" id="adult-modal" onclick="cerrarModal(event)">
+  <div class="modal-sheet">
+    <div class="modal-handle"></div>
+    <div class="modal-title">¿Quién trae a <span id="modal-nino-name"></span> hoy?</div>
+    <div id="adult-options-list"></div>
+    <button class="modal-cancel" onclick="cerrarModal()">Cancelar</button>
+  </div>
+</div>
+
+<script>
+// ── STATE ──────────────────────────────────────────────
+let registros = JSON.parse(localStorage.getItem('rd_registros') || '[]');
+const SALONES_DEFAULT = ["Sala 2","Sala 3","Sala 4","Sala 5","Cangrejos (6)","Abejas (7-8)","Camaleones (9-10)"];
+let config = JSON.parse(localStorage.getItem('rd_config') || '{"webhookUrl":"","salones":[]}');
+// Forzar salones actualizados si la lista no incluye todos los defaults
+const salonesGuardados = config.salones || [];
+const faltanSalones = SALONES_DEFAULT.some(s => !salonesGuardados.includes(s));
+if (faltanSalones) {
+  config.salones = SALONES_DEFAULT;
+  localStorage.setItem('rd_config', JSON.stringify(config));
+}
+
+// ── LOGIN ───────────────────────────────────────────────
+function verificarLogin() {
+  const input = document.getElementById('login-input');
+  const errorEl = document.getElementById('login-error');
+  if (input.value === 'eeuu1273') {
+    document.getElementById('login-screen').style.display = 'none';
+    input.value = '';
+  } else {
+    input.classList.add('error');
+    errorEl.textContent = 'Contraseña incorrecta. Intentá de nuevo.';
+    input.value = '';
+    setTimeout(() => input.classList.remove('error'), 400);
+    setTimeout(() => input.focus(), 100);
+  }
+}
+
+// ── INIT ────────────────────────────────────────────────
+window.onload = () => {
+  // Focus en el input del login
+  setTimeout(() => document.getElementById('login-input')?.focus(), 100);
+  document.getElementById('webhook-url').value = config.webhookUrl || '';
+  document.getElementById('salones-input').value = config.salones.join(', ');
+  renderizarSalones();
+  renderHistorial();
+  document.getElementById('fecha-hoy').textContent = new Date().toLocaleDateString('es-ES',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
+  sincronizarDesdeSheet();
+};
+
+// ── SYNC DESDE SHEET ────────────────────────────────────
+function convertirFecha(val) {
+  if (!val) return '';
+  if (val.includes('T')) {
+    const d = new Date(val);
+    return d.getDate().toString().padStart(2,'0') + '/' +
+           (d.getMonth()+1).toString().padStart(2,'0') + '/' +
+           d.getFullYear();
+  }
+  return val;
+}
+
+async function sincronizarDesdeSheet() {
+  if (!config.webhookUrl) return;
+
+  // Mostrar indicador sutil
+  const indicator = document.createElement('div');
+  indicator.id = 'sync-indicator';
+  indicator.style.cssText = 'position:fixed;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--gold-light));z-index:999;animation:syncBar 1.5s ease-in-out infinite;';
+  document.head.insertAdjacentHTML('beforeend', '<style>@keyframes syncBar{0%{opacity:1}50%{opacity:0.4}100%{opacity:1}}</style>');
+  document.body.appendChild(indicator);
+
+  try {
+    // Apps Script redirige — usamos la URL con redirect seguido
+    const res = await fetch(config.webhookUrl, {
+      method: 'GET',
+      redirect: 'follow'
+    });
+
+    // Verificar que la respuesta sea JSON y no una página HTML de Google
+    const text = await res.text();
+    if (!text.trim().startsWith('[') && !text.trim().startsWith('{')) {
+      console.warn('La respuesta no es JSON:', text.substring(0, 200));
+      indicator.remove(); return;
+    }
+
+    const data = JSON.parse(text);
+
+    if (!Array.isArray(data) || data.length === 0) {
+      indicator.remove(); return;
+    }
+
+    // Mapear columnas del Sheet a formato interno
+    // Función helper para buscar columna con distintas variantes de nombre
+    const col = (row, ...keys) => {
+      for (const k of keys) {
+        if (row[k] !== undefined && row[k] !== null && row[k] !== '') return String(row[k]);
+      }
+      return '';
+    };
+
+    const remotos = data
+      .filter(row => col(row, 'Nombre Niño', 'Nombre niño', 'nombre niño', 'NOMBRE NIÑO') &&
+                     col(row, 'Nombre Niño', 'Nombre niño') !== '--- PRUEBA DE CONEXIÓN ---')
+      .map(row => {
+        let fechaStr = convertirFecha(col(row, 'Fecha'));
+        // Hora: puede venir como fecha ISO de Google Sheets
+        let horaStr = col(row, 'Hora');
+        if (horaStr && horaStr.includes('T')) {
+          const d = new Date(horaStr);
+          horaStr = `${d.getHours().toString().padStart(2,'0')}:${d.getMinutes().toString().padStart(2,'0')}`;
+        }
+        return {
+          fecha: fechaStr,
+          hora: horaStr,
+          nombreNino: col(row, 'Nombre Niño', 'Nombre niño', 'nombre niño'),
+          salon: col(row, 'Salón', 'Salon', 'salon'),
+          nombreAdulto: col(row, 'Nombre Adulto', 'Nombre adulto', 'nombre adulto'),
+          parentesco: col(row, 'Parentesco', 'Parentezco', 'parentesco', 'parentezco'),
+          fechaNac: convertirFecha(col(row, 'Fecha Nac', 'Fecha nac', 'fecha nac')),
+          telefonoAdulto: col(row, 'Teléfono', 'Telefono', 'teléfono'),
+          numControl: col(row, 'N° Control', 'Numero de control', 'N° control', 'numero de control'),
+          ts: fechaStr ? new Date(fechaStr.split('/').reverse().join('-')).toISOString() : new Date().toISOString(),
+          _remoto: true
+        };
+      });
+
+    // Fusionar: los locales tienen prioridad, agregar remotos que no existan localmente
+    const keysLocales = new Set(registros.map(r => r.numControl + '|' + r.fecha + '|' + r.nombreNino));
+    const nuevos = remotos.filter(r => !keysLocales.has(r.numControl + '|' + r.fecha + '|' + r.nombreNino));
+
+    if (nuevos.length > 0) {
+      registros = [...registros, ...nuevos].sort((a,b) => new Date(b.ts) - new Date(a.ts));
+      localStorage.setItem('rd_registros', JSON.stringify(registros));
+      renderHistorial();
+      toast(`☁️ ${nuevos.length} registro${nuevos.length>1?'s':''} sincronizado${nuevos.length>1?'s':''} desde el Sheet`);
+    }
+  } catch(e) {
+    console.warn('No se pudo sincronizar desde Sheet:', e);
+  } finally {
+    document.getElementById('sync-indicator')?.remove();
+  }
+}
+
+// ── TABS ────────────────────────────────────────────────
+function switchTab(tab) {
+  if (tab === 'config') {
+    _pendingTab = tab;
+    _pendingBtn = event.currentTarget;
+    abrirPasswordModal();
+    return;
+  }
+  activarTab(tab, event.currentTarget);
+}
+
+function activarTab(tab, btn) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('panel-' + tab).classList.add('active');
+  if (btn) btn.classList.add('active');
+  if (tab === 'historial') renderHistorial();
+}
+
+let _pendingTab = null;
+let _pendingBtn = null;
+
+function abrirPasswordModal() {
+  document.getElementById('pwd-input').value = '';
+  document.getElementById('pwd-error').textContent = '';
+  document.getElementById('pwd-input').classList.remove('error');
+  document.getElementById('pwd-modal').classList.add('open');
+  setTimeout(() => document.getElementById('pwd-input').focus(), 100);
+}
+
+function cerrarPasswordModal() {
+  document.getElementById('pwd-modal').classList.remove('open');
+  _pendingTab = null;
+  _pendingBtn = null;
+}
+
+function verificarPassword() {
+  const input = document.getElementById('pwd-input');
+  const errorEl = document.getElementById('pwd-error');
+  if (input.value === '36276288') {
+    document.getElementById('pwd-modal').classList.remove('open');
+    activarTab(_pendingTab, _pendingBtn);
+    _pendingTab = null;
+    _pendingBtn = null;
+  } else {
+    input.classList.add('error');
+    errorEl.textContent = 'Contraseña incorrecta. Intentá de nuevo.';
+    input.value = '';
+    setTimeout(() => input.classList.remove('error'), 400);
+    setTimeout(() => input.focus(), 100);
+  }
+}
+
+// ── SALONES ─────────────────────────────────────────────
+function renderizarSalones() {
+  const sel = document.getElementById('salon');
+  const current = sel.value;
+  sel.innerHTML = '<option value="">— Seleccionar —</option>';
+  config.salones.forEach(s => {
+    const opt = document.createElement('option');
+    opt.value = s; opt.textContent = s;
+    sel.appendChild(opt);
+  });
+  if (current) sel.value = current;
+}
+
+function guardarSalones() {
+  const val = document.getElementById('salones-input').value;
+  config.salones = val.split(',').map(s => s.trim()).filter(Boolean);
+  localStorage.setItem('rd_config', JSON.stringify(config));
+  renderizarSalones();
+  toast('✅ Salones guardados');
+}
+
+// ── PARENTESCO ──────────────────────────────────────────
+function checkOtroParentesco() {
+  const val = document.getElementById('parentesco').value;
+  document.getElementById('otro-parentesco-wrap').style.display = val === 'Otro' ? 'block' : 'none';
+}
+
+// ── REGISTRO ────────────────────────────────────────────
+async function registrar() {
+  const nombreNino = document.getElementById('nombre-nino').value.trim();
+  const numControl = document.getElementById('num-control').value.trim();
+  const fnacDia = document.getElementById('fnac-dia').value.trim();
+  const fnacMes = document.getElementById('fnac-mes').value.trim();
+  const fnacAnio = document.getElementById('fnac-anio').value.trim();
+  const fechaNac = (fnacDia && fnacMes && fnacAnio) ? `${fnacDia.padStart(2,'0')}/${fnacMes.padStart(2,'0')}/${fnacAnio}` : '';
+  const salon = document.getElementById('salon').value;
+  const nombreAdulto = document.getElementById('nombre-adulto').value.trim();
+  const parentescoBase = document.getElementById('parentesco').value;
+  const otroParentesco = document.getElementById('otro-parentesco').value.trim();
+  const parentesco = parentescoBase === 'Otro' ? (otroParentesco || 'Otro') : parentescoBase;
+
+  const telefonoAdulto = document.getElementById('telefono-adulto').value.trim();
+
+  const faltantes = [];
+  if (!nombreNino)      faltantes.push('Nombre del niño');
+  if (!fechaNac)        faltantes.push('Fecha de nacimiento');
+  if (!numControl)      faltantes.push('N° de control');
+  if (!salon)           faltantes.push('Salón / Clase');
+  if (!nombreAdulto)    faltantes.push('Nombre del adulto');
+  if (!parentesco)      faltantes.push('Parentesco');
+  if (!telefonoAdulto)  faltantes.push('Teléfono de contacto');
+
+  if (faltantes.length > 0) {
+    toast('⚠️ Falta completar: ' + faltantes.join(', '), true);
+    return;
+  }
+
+  const ahora = new Date();
+  const fecha = ahora.toLocaleDateString('es-ES');
+  const hora = ahora.toLocaleTimeString('es-ES', {hour:'2-digit',minute:'2-digit'});
+
+  const registro = { fecha, hora, nombreNino, fechaNac, salon, nombreAdulto, parentesco, telefonoAdulto, numControl, ts: ahora.toISOString() };
+
+  // Guardar local
+  registros.unshift(registro);
+  localStorage.setItem('rd_registros', JSON.stringify(registros));
+
+  // Enviar a Google Sheets si hay URL
+  if (config.webhookUrl) {
+    const btn = document.getElementById('btn-registrar');
+    btn.disabled = true; btn.textContent = '⏳ Guardando...';
+    try {
+      // Usamos URLSearchParams para enviar como form-data (evita CORS preflight)
+      const params = new URLSearchParams();
+      params.append('fecha', registro.fecha);
+      params.append('hora', registro.hora);
+      params.append('nombreNino', registro.nombreNino);
+      params.append('salon', registro.salon);
+      params.append('nombreAdulto', registro.nombreAdulto);
+      params.append('parentesco', registro.parentesco);
+      params.append('fechaNac', registro.fechaNac);
+      params.append('telefonoAdulto', registro.telefonoAdulto);
+      params.append('numControl', registro.numControl);
+
+      await fetch(config.webhookUrl, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: params
+      });
+    } catch(e) {
+      console.warn('No se pudo enviar a Sheets:', e);
+    }
+    btn.disabled = false; btn.textContent = '✅ Registrar Ingreso';
+  }
+
+  toast(`✅ ${nombreNino} registrado — Cintita #${numControl}`);
+  limpiarFormulario();
+}
+
+function limpiarFormulario() {
+  document.getElementById('nombre-nino').value = '';
+  document.getElementById('fnac-dia').value = '';
+  document.getElementById('fnac-mes').value = '';
+  document.getElementById('fnac-anio').value = '';
+  document.getElementById('num-control').value = '';
+  document.getElementById('salon').value = '';
+  document.getElementById('nombre-adulto').value = '';
+  document.getElementById('telefono-adulto').value = '';
+  document.getElementById('parentesco').value = '';
+  document.getElementById('otro-parentesco').value = '';
+  document.getElementById('otro-parentesco-wrap').style.display = 'none';
+}
+
+// ── HISTORIAL ───────────────────────────────────────────
+function renderSalonesStats(hoy) {
+  const bar = document.getElementById('salones-stats-bar');
+  if (!bar) return;
+
+  const registrosHoy = registros.filter(r => r.fecha === hoy);
+
+  // Contar por salón usando los salones configurados
+  const counts = {};
+  config.salones.forEach(s => counts[s] = 0);
+
+  registrosHoy.forEach(r => {
+    if (counts[r.salon] !== undefined) {
+      counts[r.salon]++;
+    } else {
+      counts[r.salon] = (counts[r.salon] || 0) + 1;
+    }
+  });
+
+  // Solo mostrar salones que tienen al menos 1 registro hoy O están configurados
+  const salones = config.salones.length > 0 ? config.salones : Object.keys(counts);
+
+  if (salones.length === 0) {
+    bar.innerHTML = '<div style="font-size:12px;color:var(--brown-light);padding:4px 0;">Sin registros hoy</div>';
+    return;
+  }
+
+  bar.innerHTML = salones.map(s => `
+    <div class="salon-stat-pill">
+      <span class="num">${counts[s] || 0}</span>
+      <span class="lbl" title="${s}">${s}</span>
+    </div>`).join('');
+}
+
+function renderHistorial(filtro = '') {
+  const hoy = new Date().toLocaleDateString('es-ES');
+  const hace7 = new Date(Date.now() - 7*24*60*60*1000);
+
+  let filtrados = registros;
+  if (filtro) {
+    const q = filtro.toLowerCase();
+    filtrados = registros.filter(r =>
+      r.nombreNino.toLowerCase().includes(q) ||
+      r.numControl.toLowerCase().includes(q) ||
+      r.nombreAdulto.toLowerCase().includes(q)
+    );
+  }
+
+  document.getElementById('stat-total').textContent = registros.filter(r => r.fecha === hoy).length;
+  document.getElementById('stat-semana').textContent = registros.filter(r => new Date(r.ts) >= hace7).length;
+  document.getElementById('stat-todos').textContent = registros.length;
+  renderSalonesStats(hoy);
+
+  const lista = document.getElementById('lista-registros');
+  if (filtrados.length === 0) {
+    lista.innerHTML = `<div class="empty-state"><span class="emoji">${filtro ? '🔍' : '✝️'}</span><p>${filtro ? 'Sin resultados para "'+filtro+'"' : 'Aún no hay registros.<br>¡Empieza registrando el primer ingreso!'}</p></div>`;
+    return;
+  }
+
+  lista.innerHTML = filtrados.map(r => {
+    const nombre = filtro ? highlight(r.nombreNino, filtro) : r.nombreNino;
+    const control = filtro ? highlight(r.numControl, filtro) : r.numControl;
+    return `
+      <div class="record-card">
+        <div class="record-badge">${control}</div>
+        <div class="record-info">
+          <div class="record-name">${nombre}</div>
+          <div class="record-sub">🎂 ${r.fechaNac || '-'} · 👤 ${r.nombreAdulto} · ${r.parentesco}</div>
+        </div>
+        <div class="record-meta">
+          <span class="record-salon">${r.salon}</span>
+          <div class="record-time">${r.fecha} ${r.hora}</div>
+        </div>
+      </div>`;
+  }).join('');
+}
+
+function filtrarRegistros() {
+  renderHistorial(document.getElementById('buscador').value);
+}
+
+function highlight(text, query) {
+  if (!query) return text;
+  const re = new RegExp('(' + query.replace(/[.*+?^${}()|[\]\\]/g,'\\$&') + ')', 'gi');
+  return text.replace(re, '<mark class="highlight">$1</mark>');
+}
+
+// ── CONFIG ──────────────────────────────────────────────
+function guardarConfig() {
+  config.webhookUrl = document.getElementById('webhook-url').value.trim();
+  localStorage.setItem('rd_config', JSON.stringify(config));
+}
+
+async function probarConexion() {
+  guardarConfig();
+  if (!config.webhookUrl) { toast('⚠️ Primero ingresá la URL del Web App', true); return; }
+  if (!config.webhookUrl.includes('script.google.com')) {
+    toast('⚠️ La URL no parece válida. Debe ser de script.google.com', true);
+    return;
+  }
+  toast('⏳ Enviando fila de prueba a tu Sheet...');
+  try {
+    const params = new URLSearchParams();
+    params.append('fecha', 'PRUEBA');
+    params.append('hora', new Date().toLocaleTimeString('es-ES',{hour:'2-digit',minute:'2-digit'}));
+    params.append('nombreNino', '--- PRUEBA DE CONEXIÓN ---');
+    params.append('salon', 'Test');
+    params.append('nombreAdulto', 'Sistema');
+    params.append('parentesco', 'Test');
+    params.append('fechaNac', '01/01/2000');
+    params.append('telefonoAdulto', '000-0000');
+    params.append('numControl', 'TEST-00');
+    await fetch(config.webhookUrl, {
+      method: 'POST',
+      mode: 'no-cors',
+      body: params
+    });
+    toast('✅ Solicitud enviada. Revisá tu Sheet: debería aparecer una fila con "PRUEBA".');
+  } catch(e) {
+    toast('❌ URL inválida o sin conexión a internet', true);
+  }
+}
+
+function copiarCodigo() {
+  const code = document.getElementById('apps-script-code').textContent;
+  navigator.clipboard.writeText(code).then(() => toast('📋 Código copiado al portapapeles'));
+}
+
+// ── FECHA VALIDACIÓN ────────────────────────────────────
+function validarCampoFecha(input, min, max, nextId) {
+  let val = parseInt(input.value, 10);
+  if (isNaN(val)) return;
+  if (val > max) { input.value = max; }
+  if (val < 1 && input.value.length > 0) { input.value = min; }
+  if (input.value.length >= 2 && nextId) {
+    document.getElementById(nextId).focus();
+  }
+}
+
+function validarAnio(input) {
+  const anioActual = new Date().getFullYear();
+  let val = parseInt(input.value, 10);
+  if (isNaN(val)) return;
+  if (input.value.length === 4) {
+    if (val < 2015) input.value = 2015;
+    if (val > anioActual) input.value = anioActual;
+  }
+}
+
+// ── AUTOCOMPLETE ────────────────────────────────────────
+function onNombreNinoInput() {
+  const q = document.getElementById('nombre-nino').value.trim().toLowerCase();
+  const dropdown = document.getElementById('ac-dropdown');
+
+  if (q.length < 2) { cerrarDropdown(); return; }
+
+  // Buscar nombres únicos de niños que coincidan
+  const seen = new Set();
+  const coincidentes = registros.filter(r => {
+    const key = r.nombreNino.toLowerCase();
+    if (key.includes(q) && !seen.has(r.nombreNino)) {
+      seen.add(r.nombreNino);
+      return true;
+    }
+    return false;
+  }).slice(0, 5);
+
+  if (coincidentes.length === 0) { cerrarDropdown(); return; }
+
+  dropdown.innerHTML = coincidentes.map(r => `
+    <div class="autocomplete-item" onmousedown="seleccionarNino('${r.nombreNino.replace(/'/g,"\'")}')">
+      <div class="ac-name">👶 ${r.nombreNino}</div>
+      <div class="ac-sub">Última visita: ${r.fecha}</div>
+    </div>`).join('');
+
+  dropdown.classList.add('open');
+}
+
+function cerrarDropdown() {
+  document.getElementById('ac-dropdown').classList.remove('open');
+}
+
+function seleccionarNino(nombre) {
+  document.getElementById('nombre-nino').value = nombre;
+  cerrarDropdown();
+
+  // Buscar todos los adultos únicos que trajeron a este niño
+  // Ordenar por ts desc para que el primer registro de cada adulto sea el MÁS RECIENTE
+  // Así el teléfono y datos siempre reflejan el último ingreso registrado
+  // Ordenar por ts desc — el primero de cada adulto es siempre el más reciente
+  // Así el teléfono y datos reflejan la última vez que vino (por si se actualizó)
+  const adultosMap = new Map();
+  registros
+    .filter(r => r.nombreNino === nombre)
+    .sort((a, b) => new Date(b.ts) - new Date(a.ts))
+    .forEach(r => {
+      const key = r.nombreAdulto.toLowerCase().trim() + '|' + r.parentesco.toLowerCase().trim();
+      if (!adultosMap.has(key)) {
+        adultosMap.set(key, r); // primer registro = el más reciente
+      }
+    });
+
+  const adultos = Array.from(adultosMap.values());
+
+  // Autocompletar fecha de nacimiento y salón del niño (son siempre los mismos)
+  const registroConDatos = registros.find(r => r.nombreNino === nombre && (r.fechaNac || r.salon));
+  if (registroConDatos) {
+    if (registroConDatos.fechaNac) aplicarFechaNac(registroConDatos.fechaNac);
+    if (registroConDatos.salon) {
+      const sel = document.getElementById('salon');
+      sel.value = registroConDatos.salon;
+    }
+  }
+
+  if (adultos.length === 0) return;
+
+  if (adultos.length === 1) {
+    // Solo un adulto, autocompletar directamente
+    aplicarAdulto(adultos[0]);
+    toast(`✨ Datos de ${adultos[0].nombreAdulto} completados`);
+  } else {
+    // Varios adultos, mostrar modal
+    mostrarModalAdultos(nombre, adultos);
+  }
+}
+
+function aplicarFechaNac(fechaNac) {
+  // fechaNac formato DD/MM/AAAA
+  const partes = fechaNac.split('/');
+  if (partes.length === 3) {
+    document.getElementById('fnac-dia').value = parseInt(partes[0], 10);
+    document.getElementById('fnac-mes').value = parseInt(partes[1], 10);
+    document.getElementById('fnac-anio').value = parseInt(partes[2], 10);
+  }
+}
+
+function aplicarAdulto(r) {
+  document.getElementById('nombre-adulto').value = r.nombreAdulto;
+  document.getElementById('telefono-adulto').value = r.telefonoAdulto || '';
+
+  const parentescos = ['Madre','Padre','Abuela/o','Tía/o','Otro'];
+  const sel = document.getElementById('parentesco');
+  if (parentescos.includes(r.parentesco)) {
+    sel.value = r.parentesco;
+    document.getElementById('otro-parentesco-wrap').style.display = 'none';
+  } else {
+    sel.value = 'Otro';
+    document.getElementById('otro-parentesco-wrap').style.display = 'block';
+    document.getElementById('otro-parentesco').value = r.parentesco;
+  }
+}
+
+function mostrarModalAdultos(nombreNino, adultos) {
+  document.getElementById('modal-nino-name').textContent = nombreNino;
+  const parentescoIcons = { 'Madre':'👩', 'Padre':'👨', 'Abuela/o':'👵', 'Tía/o':'🧑', 'Otro':'👤' };
+  document.getElementById('adult-options-list').innerHTML = adultos.map((r, i) => `
+    <div class="adult-option" onclick="elegirAdulto(${i})">
+      <div class="ao-icon">${parentescoIcons[r.parentesco] || '👤'}</div>
+      <div>
+        <div class="ao-name">${r.nombreAdulto}</div>
+        <div class="ao-sub">${r.parentesco} · 📞 ${r.telefonoAdulto || 'Sin teléfono'} · Última vez: ${r.fecha}</div>
+      </div>
+    </div>`).join('');
+
+  // Guardamos los adultos en el modal para poder acceder al elegir
+  document.getElementById('adult-modal')._adultos = adultos;
+  document.getElementById('adult-modal').classList.add('open');
+}
+
+function elegirAdulto(idx) {
+  const adultos = document.getElementById('adult-modal')._adultos;
+  aplicarAdulto(adultos[idx]);
+  cerrarModal();
+  toast(`✨ Datos de ${adultos[idx].nombreAdulto} completados`);
+}
+
+function cerrarModal(e) {
+  if (e && e.target !== document.getElementById('adult-modal')) return;
+  document.getElementById('adult-modal').classList.remove('open');
+}
+
+// ── VALIDACIÓN FECHA ────────────────────────────────────
+function clampFecha(input, min, max, nextId) {
+  let val = parseInt(input.value, 10);
+  if (isNaN(val)) return;
+  if (val < min) { input.value = min; val = min; }
+  if (val > max) { input.value = max; val = max; }
+  // Auto-tab al siguiente campo si ya tiene los dígitos completos
+  const maxDigits = String(max).length;
+  if (String(val).length >= maxDigits && nextId) {
+    document.getElementById(nextId).focus();
+  }
+}
+
+function clampAnio(input) {
+  const anioActual = new Date().getFullYear();
+  let val = parseInt(input.value, 10);
+  if (isNaN(val)) return;
+  if (input.value.length < 4) return; // esperar a que termine de tipear
+  if (val < 2015) input.value = 2015;
+  if (val > anioActual) input.value = anioActual;
+}
+
+// ── BORRADO LOCAL ───────────────────────────────────────
+function confirmarBorrado() {
+  document.getElementById('confirm-modal').classList.add('open');
+}
+
+function cerrarConfirm() {
+  document.getElementById('confirm-modal').classList.remove('open');
+}
+
+function borrarLocal() {
+  registros = [];
+  localStorage.removeItem('rd_registros');
+  renderHistorial();
+  cerrarConfirm();
+  toast('🗑️ Historial local borrado');
+}
+
+// ── TOAST ────────────────────────────────────────────────
+function toast(msg, isError = false) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'toast' + (isError ? ' error' : '');
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3000);
+}
+</script>
+</body>
+</html>
