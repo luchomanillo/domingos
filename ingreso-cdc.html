@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ingresar</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #0d0d0d;
+      --surface:  #161616;
+      --border:   #2a2a2a;
+      --accent:   #e8ff47;
+      --text:     #f0f0f0;
+      --muted:    #888;
+    }
+
+    body {
+      min-height: 100dvh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg);
+      font-family: 'Inter', sans-serif;
+      padding: 1.5rem;
+    }
+
+    /* subtle grain overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      background-size: 200px 200px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .card {
+      position: relative;
+      z-index: 1;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 1.25rem;
+      padding: clamp(2rem, 6vw, 3.5rem) clamp(1.75rem, 7vw, 4rem);
+      max-width: 520px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 0 0 1px rgba(232,255,71,.08), 0 24px 60px rgba(0,0,0,.55);
+    }
+
+    /* accent bar on top */
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 10%; right: 10%;
+      height: 2px;
+      background: var(--accent);
+      border-radius: 0 0 4px 4px;
+    }
+
+    .eyebrow {
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1.1rem;
+    }
+
+    .headline {
+      font-size: clamp(1.35rem, 4.5vw, 1.75rem);
+      font-weight: 800;
+      color: var(--text);
+      line-height: 1.25;
+      margin-bottom: 2rem;
+    }
+
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      gap: .55rem;
+      background: var(--accent);
+      color: #0d0d0d;
+      font-size: clamp(.88rem, 2.5vw, 1rem);
+      font-weight: 700;
+      text-decoration: none;
+      padding: .85em 1.75em;
+      border-radius: 9999px;
+      transition: transform .15s ease, box-shadow .15s ease, filter .15s ease;
+    }
+
+    .cta:hover,
+    .cta:focus-visible {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(232,255,71,.30);
+      filter: brightness(1.06);
+    }
+
+    .cta:active { transform: translateY(0); }
+
+    .cta svg {
+      flex-shrink: 0;
+      transition: transform .15s ease;
+    }
+
+    .cta:hover svg { transform: translateX(3px); }
+
+    .url-hint {
+      margin-top: 1.4rem;
+      font-size: .72rem;
+      color: var(--muted);
+      word-break: break-all;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .cta, .cta svg { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <p class="eyebrow">Chicos del centro</p>
+    <h1 class="headline">Nuevo link de acceso</h1>
+
+    <a class="cta" href="https://chicosdelcentro.github.io/ingreso/" target="_blank" rel="noopener noreferrer">
+      Ingresar
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+
+    <p class="url-hint">chicosdelcentro.github.io/ingreso/</p>
+  </div>
+</body>
+</html>
